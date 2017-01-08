@@ -1,4 +1,7 @@
 class GroupsController < ApplicationController
+  before_action :authenticate_user! , only: [:new]
+  
+
   def index
     @groups = Group.all
   end
@@ -36,7 +39,7 @@ class GroupsController < ApplicationController
       render :edit
     end
   end
-  
+
 
   def destroy
     @group = Group.find(params[:id])
